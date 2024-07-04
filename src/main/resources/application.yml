@@ -1,0 +1,17 @@
+# Server configuration
+server:
+  port: 8080
+
+# Datasource configuration
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.221:3306/studentsystem?characterEncoding=utf-8
+    username: root
+    password: root
+
+
+jwt:
+    secret: S3cr3tK3y1234567890!@#$%^&*()
+    expiration: 86400000
