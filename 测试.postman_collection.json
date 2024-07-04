@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "4cbeed5c-64dd-4e73-9019-93c77675b7b5",
+		"name": "学校公告测试",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36685022",
+		"_collection_link": "https://speeding-shuttle-650901.postman.co/workspace/1-Workspace~7eae2703-fdd0-4e19-a0ef-3806c3b7a4e1/collection/36685022-4cbeed5c-64dd-4e73-9019-93c77675b7b5?action=share&source=collection_link&creator=36685022"
+	},
+	"item": [
+		{
+			"name": "课程分页查询",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/showCourses?page=1&size=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"showCourses"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "新增课程（老师）",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/course/teacher/courseManagement/insertNewClass?courseId=100&courseName=涛神论&max=30&now=1&teacher=toggysama",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"teacher",
+						"courseManagement",
+						"insertNewClass"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "100"
+						},
+						{
+							"key": "courseName",
+							"value": "涛神论"
+						},
+						{
+							"key": "max",
+							"value": "30"
+						},
+						{
+							"key": "now",
+							"value": "1"
+						},
+						{
+							"key": "teacher",
+							"value": "toggysama"
+						}
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "删除课程（老师）",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/teacher/courseManagement/deleteOldClass?courseId=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"teacher",
+						"courseManagement",
+						"deleteOldClass"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "5",
+							"description": "需要删除的课程代码"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "返回公告表中所有信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/messages/getallmsg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messages",
+						"getallmsg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师发送信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/messages/send?sId=20240003&mContent=你好，这是一条测试内容&mType=测试&mTitle=你好",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messages",
+						"send"
+					],
+					"query": [
+						{
+							"key": "sId",
+							"value": "20240003",
+							"description": "学生id"
+						},
+						{
+							"key": "mContent",
+							"value": "你好，这是一条测试内容",
+							"description": "信息内容"
+						},
+						{
+							"key": "mType",
+							"value": "测试",
+							"description": "消息种类"
+						},
+						{
+							"key": "mTitle",
+							"value": "你好",
+							"description": "标题"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "公告信息分页查询",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/messages/list?sId=20240001&page=0&size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messages",
+						"list"
+					],
+					"query": [
+						{
+							"key": "sId",
+							"value": "20240001"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师新增课程",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/teacher/courseManagement/insertNewClass?courseId=20030522&courseName=gooogg23&all=50&now=0&teacher=taoge12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"teacher",
+						"courseManagement",
+						"insertNewClass"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "20030522",
+							"description": "课程id"
+						},
+						{
+							"key": "courseName",
+							"value": "gooogg23",
+							"description": "课程名(小写字母)"
+						},
+						{
+							"key": "all",
+							"value": "50",
+							"description": "最大课程人数"
+						},
+						{
+							"key": "now",
+							"value": "0",
+							"description": "现有课程人数"
+						},
+						{
+							"key": "teacher",
+							"value": "taoge12",
+							"description": "老师名字"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师删除课程",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/teacher/courseManagement/deleteOldClass?courseId=666696",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"teacher",
+						"courseManagement",
+						"deleteOldClass"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "666696"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "选课",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/courseChooser?courseId=666696&stuId=20240009",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"courseChooser"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "666696"
+						},
+						{
+							"key": "stuId",
+							"value": "20240009"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "退课",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/courseExiter?courseId=666696&stuId=20240009",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"courseExiter"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "666696"
+						},
+						{
+							"key": "stuId",
+							"value": "20240009"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生课表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/course/studentCourses?stuId=20240003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"course",
+						"studentCourses"
+					],
+					"query": [
+						{
+							"key": "stuId",
+							"value": "20240003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "账号登陆",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/login?sId=20240001&stuPassword=password1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "sId",
+							"value": "20240001"
+						},
+						{
+							"key": "stuPassword",
+							"value": "password1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
